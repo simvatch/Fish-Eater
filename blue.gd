@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var move_speed := 150
+@export var move_speed := 175
 @export var spawn_x := 1200  
 @export var despawn_x := -100  
 @export var min_y := 200

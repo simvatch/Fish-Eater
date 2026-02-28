@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b43378367qhc1"]
+[gd_scene load_steps=22 format=3 uid="uid://b43378367qhc1"]
 
 [ext_resource type="Texture2D" uid="uid://btuyfbft47hp3" path="res://oceon-bg.png" id="2_mip7y"]
 [ext_resource type="Script" uid="uid://bdvccvqdid3dm" path="res://fish_moevement.gd" id="3_1k4jg"]
@@ -6,12 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://dlscttcahng1e" path="res://new-mega-weed.png" id="5_2ru4w"]
 [ext_resource type="Script" uid="uid://bd6nlamge5ib8" path="res://seaweed.gd" id="5_mip7y"]
 [ext_resource type="Texture2D" uid="uid://qlgqbsj54ykc" path="res://new-reg-weed.png" id="6_0q4ab"]
-[ext_resource type="Texture2D" uid="uid://2dcxb3e3pn5l" path="res://new-player-swim.png" id="7_ac1bu"]
 [ext_resource type="Script" uid="uid://ddcupoy7fv8t5" path="res://enemies.gd" id="9_0q4ab"]
-[ext_resource type="Texture2D" uid="uid://bg20jamvnu5hg" path="res://food-small.png" id="10_ac1bu"]
+[ext_resource type="Texture2D" uid="uid://b2f6jesilsyfm" path="res://new-food-small-swim1.png" id="10_mn0x3"]
+[ext_resource type="Texture2D" uid="uid://dvraptg0mcpfp" path="res://new-food-small-swim2.png" id="11_2ru4w"]
 [ext_resource type="Texture2D" uid="uid://d3xbjthmisuoi" path="res://blue_food.png" id="11_ac1bu"]
-[ext_resource type="Texture2D" uid="uid://d0rka66tvivqd" path="res://new-food-small-swim-sheet.png" id="11_mn0x3"]
 [ext_resource type="Script" uid="uid://bv1owf5ijnw8d" path="res://blue.gd" id="11_x7gjk"]
+[ext_resource type="Texture2D" uid="uid://dumona87v6tw5" path="res://new-food-small-swim3.png" id="12_sxahd"]
+[ext_resource type="Texture2D" uid="uid://cngtfatfhsgdx" path="res://new-food-small-swim4.png" id="13_egjh1"]
 
 [sub_resource type="GDScript" id="GDScript_x7gjk"]
 
@@ -20,8 +21,70 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0q4ab"]
 size = Vector2(130.99991, 110.99997)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6u020"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ac1bu"]
 size = Vector2(87, 82.75623)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cn81j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_2ru4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_sxahd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_egjh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mn0x3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p80m1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_sxahd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_egjh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mn0x3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2ru4w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_abf7b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_egjh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mn0x3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2ru4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_sxahd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_x7gjk")
@@ -55,14 +118,15 @@ rotation = 3.1415927
 scale = Vector2(1.0000007, -1)
 script = ExtResource("3_1k4jg")
 
-[node name="Sprite2D" type="Sprite2D" parent="Character"]
-position = Vector2(-2.0000076, -0.99999046)
-texture = ExtResource("7_ac1bu")
-hframes = 4
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
 position = Vector2(-0.99999833, 2)
 shape = SubResource("RectangleShape2D_0q4ab")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character"]
+position = Vector2(121.99995, -345)
+rotation = -3.1415925
+scale = Vector2(0.9999993, -1)
+sprite_frames = SubResource("SpriteFrames_6u020")
 
 [node name="Blue" type="Area2D" parent="." groups=["Colliding"]]
 position = Vector2(940.5, 251.5)
@@ -84,41 +148,44 @@ position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
 script = ExtResource("9_0q4ab")
 
-[node name="Purple" type="Sprite2D" parent="Purple"]
-scale = Vector2(0.99999994, 1)
-texture = ExtResource("11_mn0x3")
-hframes = 4
-
 [node name="Purple2" type="CollisionShape2D" parent="Purple"]
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_ac1bu")
+
+[node name="Purple" type="AnimatedSprite2D" parent="Purple"]
+position = Vector2(171.95177, 180.36362)
+scale = Vector2(0.9999999, 1)
+sprite_frames = SubResource("SpriteFrames_cn81j")
+autoplay = "default"
 
 [node name="Purple2" type="Area2D" parent="." groups=["Colliding"]]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
 script = ExtResource("9_0q4ab")
 
-[node name="Purple" type="Sprite2D" parent="Purple2"]
-position = Vector2(30.843384, 191.16885)
-scale = Vector2(0.99999994, 1)
-texture = ExtResource("10_ac1bu")
-
 [node name="Purple2" type="CollisionShape2D" parent="Purple2"]
-position = Vector2(30.843384, 191.16885)
+position = Vector2(173.49408, 180.36365)
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_ac1bu")
+
+[node name="Purple" type="AnimatedSprite2D" parent="Purple2"]
+scale = Vector2(0.9999999, 1)
+sprite_frames = SubResource("SpriteFrames_p80m1")
+autoplay = "default"
 
 [node name="Purple3" type="Area2D" parent="." groups=["Colliding"]]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
 script = ExtResource("9_0q4ab")
 
-[node name="Purple" type="Sprite2D" parent="Purple3"]
-position = Vector2(69.39758, 359.06497)
-scale = Vector2(0.99999994, 1)
-texture = ExtResource("10_ac1bu")
+[node name="Purple" type="AnimatedSprite2D" parent="Purple3"]
+position = Vector2(108.72287, 383.16882)
+scale = Vector2(0.98795146, 1.0064936)
+sprite_frames = SubResource("SpriteFrames_abf7b")
+autoplay = "default"
+frame_progress = 0.7624017
 
 [node name="Purple2" type="CollisionShape2D" parent="Purple3"]
-position = Vector2(69.397705, 359.06497)
+position = Vector2(107.18074, 383.16888)
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_ac1bu")
