@@ -1,7 +1,7 @@
 extends Area2D
 
 signal add_point
-@export var move_speed := 150
+@export var move_speed := 50
 @export var spawn_x := 1152    
 @export var despawn_x := -100  
 @export var min_y := 200
@@ -28,7 +28,7 @@ func respawn():
 	var new_pos
 	var safe = false
 	while not safe:
-		new_pos = Vector2(spawn_x + randi_range(50, 300), $Sprite2D.position.y)
+		new_pos = Vector2(spawn_x + randi_range(50, 300), position.y)
 		safe = true
 		for other_fish in get_tree().get_nodes_in_group("Colliding"):
 			if other_fish != self and other_fish.position.distance_to(new_pos) < 100:

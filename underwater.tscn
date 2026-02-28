@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b43378367qhc1"]
+[gd_scene load_steps=37 format=3 uid="uid://b43378367qhc1"]
 
 [ext_resource type="Texture2D" uid="uid://btuyfbft47hp3" path="res://oceon-bg.png" id="2_mip7y"]
 [ext_resource type="Script" uid="uid://bdvccvqdid3dm" path="res://fish_moevement.gd" id="3_1k4jg"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cngtfatfhsgdx" path="res://new-food-small-swim4.png" id="13_egjh1"]
 [ext_resource type="FontFile" uid="uid://bxnw4x5pr72cq" path="res://FreckleFace-Regular.ttf" id="18_cn81j"]
 [ext_resource type="Texture2D" uid="uid://daqdvaqtnj6ct" path="res://new-player-evo-swim1.png" id="19_37j1w"]
+[ext_resource type="Script" uid="uid://h2m68hb5i7bn" path="res://level_2.gd" id="19_p1bhh"]
 [ext_resource type="Texture2D" uid="uid://u1qnp4ribvub" path="res://new-player-evo-swim2.png" id="20_057cj"]
 [ext_resource type="Texture2D" uid="uid://bvhsvdvidggkp" path="res://new-player-evo-swim3.png" id="21_56waf"]
 [ext_resource type="Texture2D" uid="uid://cad1jeuj0sfib" path="res://new-player-evo-swim4.png" id="22_1kg77"]
@@ -32,17 +33,26 @@ script/source = "extends Node2D
 @export var level := 1
 @export var score := 0  
 @export var points_to_level_up := 10 
+
 @onready var purple_fish1 := $Purple
 @onready var purple_fish2 := $Purple2
 @onready var purple_fish3 := $Purple3
+
+@onready var blue_fish := $Blue
+@onready var shark := $Shark
+@onready var octopus := $Octopus
 
 func _ready():
 	show_level(level)
 	$CanvasLayer/Plus1.hide() 
 	$CanvasLayer/Plus2.hide() 
+
 	purple_fish1.add_point.connect(add_point)
 	purple_fish2.add_point.connect(add_point)
 	purple_fish3.add_point.connect(add_point)
+	blue_fish.add_point.connect(add_point)
+	#shark.add_point.connect(add_point)
+	#octopus.add_point.connect(add_point)
 
 func show_level(lvl):
 	$Level1.hide()
@@ -50,9 +60,9 @@ func show_level(lvl):
 
 	match lvl:
 		1:
-			$Level1.show()
+			$Level1.show()    
 		2: 
-			$Level2.show()
+			$Level2.show()   
 
 func add_point(num):
 	score += num
@@ -361,6 +371,7 @@ theme_override_font_sizes/font_size = 100
 text = "+2"
 
 [node name="Level2" type="CharacterBody2D" parent="." groups=["Character", "Colliding"]]
+script = ExtResource("19_p1bhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level2"]
 position = Vector2(0, -0.25)
