@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b43378367qhc1"]
+[gd_scene format=3 uid="uid://b43378367qhc1"]
 
 [ext_resource type="Texture2D" uid="uid://btuyfbft47hp3" path="res://oceon-bg.png" id="2_mip7y"]
 [ext_resource type="Script" uid="uid://bdvccvqdid3dm" path="res://fish_moevement.gd" id="3_1k4jg"]
@@ -24,7 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://bvhsvdvidggkp" path="res://new-player-evo-swim3.png" id="21_56waf"]
 [ext_resource type="Texture2D" uid="uid://cad1jeuj0sfib" path="res://new-player-evo-swim4.png" id="22_1kg77"]
 [ext_resource type="Texture2D" uid="uid://dfd4mwxy3wccy" path="res://shark!.png" id="24_1kg77"]
-[ext_resource type="Script" uid="uid://iw6vgu2826n6" path="res://octo.gd" id="24_p1bhh"]
+[ext_resource type="Script" path="res://octo.gd" id="24_p1bhh"]
+[ext_resource type="Script" uid="uid://c0qlyi3gvff03" path="res://biggy_fishy.gd" id="26_p1bhh"]
 
 [sub_resource type="GDScript" id="GDScript_x7gjk"]
 script/source = "extends Node2D
@@ -221,82 +222,82 @@ size = Vector2(302.12637, 221.091)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1bhh"]
 size = Vector2(949.9369, 611.3617)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=1513734133]
 script = SubResource("GDScript_x7gjk")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1077037724]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_mip7y")
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="." unique_id=646089394]
 script = ExtResource("5_mip7y")
 
-[node name="Long" type="Sprite2D" parent="CharacterBody2D2"]
+[node name="Long" type="Sprite2D" parent="CharacterBody2D2" unique_id=1617281090]
 position = Vector2(448, 520)
 texture = ExtResource("4_mn0x3")
 
-[node name="Mega" type="Sprite2D" parent="CharacterBody2D2"]
+[node name="Mega" type="Sprite2D" parent="CharacterBody2D2" unique_id=1960503008]
 position = Vector2(824, 392)
 texture = ExtResource("5_2ru4w")
 
-[node name="Small" type="Sprite2D" parent="CharacterBody2D2"]
+[node name="Small" type="Sprite2D" parent="CharacterBody2D2" unique_id=1636367896]
 position = Vector2(274, 585)
 texture = ExtResource("6_0q4ab")
 
-[node name="Blue" type="Area2D" parent="." groups=["Colliding"]]
+[node name="Blue" type="Area2D" parent="." unique_id=804506492 groups=["Colliding"]]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.6484375, 0.6015625)
 script = ExtResource("11_x7gjk")
 
-[node name="Blue" type="Sprite2D" parent="Blue"]
+[node name="Blue" type="Sprite2D" parent="Blue" unique_id=1549266196]
 position = Vector2(-231.3252, 267.63638)
 scale = Vector2(2.2067003, 2.1615384)
 texture = ExtResource("7_1kg77")
 
-[node name="Blue2" type="CollisionShape2D" parent="Blue"]
+[node name="Blue2" type="CollisionShape2D" parent="Blue" unique_id=332793716]
 position = Vector2(-232.86755, 260.8879)
 scale = Vector2(3.4031043, 3.5932066)
 shape = SubResource("RectangleShape2D_ac1bu")
 
-[node name="Purple" type="Area2D" parent="." groups=["Colliding", "Purple"]]
+[node name="Purple" type="Area2D" parent="." unique_id=1251765038 groups=["Colliding", "Purple"]]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
 script = ExtResource("9_0q4ab")
 
-[node name="Purple" type="AnimatedSprite2D" parent="Purple"]
+[node name="Purple" type="AnimatedSprite2D" parent="Purple" unique_id=1939697892]
 position = Vector2(171.95177, 180.36362)
 scale = Vector2(0.9999999, 1)
 sprite_frames = SubResource("SpriteFrames_cn81j")
 autoplay = "default"
 
-[node name="Purple2" type="CollisionShape2D" parent="Purple"]
+[node name="Purple2" type="CollisionShape2D" parent="Purple" unique_id=835856230]
 position = Vector2(171.9518, 178.7013)
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_ac1bu")
 
-[node name="Purple2" type="Area2D" parent="." groups=["Colliding", "Purple"]]
+[node name="Purple2" type="Area2D" parent="." unique_id=288891420 groups=["Colliding", "Purple"]]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
 script = ExtResource("9_0q4ab")
 
-[node name="Purple" type="AnimatedSprite2D" parent="Purple2"]
+[node name="Purple" type="AnimatedSprite2D" parent="Purple2" unique_id=251177064]
 position = Vector2(171.95177, -9.142855)
 scale = Vector2(0.9999999, 1)
 sprite_frames = SubResource("SpriteFrames_p80m1")
 autoplay = "default"
 
-[node name="Purple2" type="CollisionShape2D" parent="Purple2"]
+[node name="Purple2" type="CollisionShape2D" parent="Purple2" unique_id=2076273523]
 position = Vector2(171.95172, -7.4805145)
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_ac1bu")
 
-[node name="Purple3" type="Area2D" parent="." groups=["Colliding", "Purple"]]
+[node name="Purple3" type="Area2D" parent="." unique_id=262482924 groups=["Colliding", "Purple"]]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
 script = ExtResource("9_0q4ab")
 
-[node name="Purple" type="AnimatedSprite2D" parent="Purple3"]
+[node name="Purple" type="AnimatedSprite2D" parent="Purple3" unique_id=494318441]
 position = Vector2(108.72287, 383.16882)
 scale = Vector2(0.98795146, 1.0064936)
 sprite_frames = SubResource("SpriteFrames_abf7b")
@@ -304,31 +305,31 @@ autoplay = "default"
 frame = 3
 frame_progress = 1.0
 
-[node name="Purple2" type="CollisionShape2D" parent="Purple3"]
+[node name="Purple2" type="CollisionShape2D" parent="Purple3" unique_id=1973880761]
 position = Vector2(107.18074, 383.16888)
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_ac1bu")
 
-[node name="Level1" type="CharacterBody2D" parent="." groups=["Character", "Colliding"]]
+[node name="Level1" type="CharacterBody2D" parent="." unique_id=1839240272 groups=["Character", "Colliding"]]
 position = Vector2(122, 345)
 rotation = 3.1415927
 scale = Vector2(1.0000007, -1)
 script = ExtResource("3_1k4jg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1" unique_id=1062370407]
 position = Vector2(-0.49999237, 4.75)
 shape = SubResource("RectangleShape2D_0q4ab")
 
-[node name="Fish1" type="AnimatedSprite2D" parent="Level1"]
+[node name="Fish1" type="AnimatedSprite2D" parent="Level1" unique_id=440132075]
 position = Vector2(-0.99998474, 1)
 rotation = -3.1415925
 scale = Vector2(0.9999993, -1)
 sprite_frames = SubResource("SpriteFrames_6u020")
 autoplay = "default"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1207264159]
 
-[node name="Plus1" type="Label" parent="CanvasLayer"]
+[node name="Plus1" type="Label" parent="CanvasLayer" unique_id=334036371]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -344,7 +345,7 @@ theme_override_fonts/font = ExtResource("18_cn81j")
 theme_override_font_sizes/font_size = 100
 text = "+1"
 
-[node name="Plus2" type="Label" parent="CanvasLayer"]
+[node name="Plus2" type="Label" parent="CanvasLayer" unique_id=1536939472]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -360,45 +361,60 @@ theme_override_fonts/font = ExtResource("18_cn81j")
 theme_override_font_sizes/font_size = 100
 text = "+2"
 
-[node name="Level2" type="CharacterBody2D" parent="." groups=["Character", "Colliding"]]
+[node name="Level2" type="CharacterBody2D" parent="." unique_id=1803266520 groups=["Character", "Colliding"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level2" unique_id=511016640]
 position = Vector2(0, -0.25)
 shape = SubResource("RectangleShape2D_0q4ab")
 
-[node name="Fish2" type="AnimatedSprite2D" parent="Level2"]
+[node name="Fish2" type="AnimatedSprite2D" parent="Level2" unique_id=728425904]
 position = Vector2(-0.99998474, 1)
 rotation = -3.1415925
 scale = Vector2(0.9999993, -1)
 sprite_frames = SubResource("SpriteFrames_p1bhh")
 autoplay = "default"
 
-[node name="octo" type="Area2D" parent="." groups=["Colliding", "Purple"]]
+[node name="octo" type="Area2D" parent="." unique_id=674297773 groups=["Colliding", "Purple"]]
 position = Vector2(1089, 607)
 scale = Vector2(0.42047128, 0.36187744)
 script = ExtResource("24_p1bhh")
 
-[node name="octo_box" type="CollisionShape2D" parent="octo"]
+[node name="octo_box" type="CollisionShape2D" parent="octo" unique_id=92361802]
 position = Vector2(-80.96875, -73.229126)
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_1kg77")
 
-[node name="Sprite2D" type="Sprite2D" parent="octo"]
+[node name="Sprite2D" type="Sprite2D" parent="octo" unique_id=1862691487]
 position = Vector2(-89.292534, -132.42018)
 scale = Vector2(3.435694, 3.7599096)
 texture = ExtResource("13_56waf")
 
-[node name="sharky" type="Area2D" parent="." groups=["Colliding", "Purple"]]
+[node name="sharky" type="Area2D" parent="." unique_id=2069568265 groups=["Colliding", "Purple"]]
 position = Vector2(2202.2354, 548.5547)
 scale = Vector2(0.1767961, 0.13095528)
 script = ExtResource("9_0q4ab")
 
-[node name="sharkysharky" type="CollisionShape2D" parent="sharky"]
+[node name="sharkysharky" type="CollisionShape2D" parent="sharky" unique_id=1971329800]
 position = Vector2(-7866.326, -3039.9614)
 scale = Vector2(1.5421686, 1.6623378)
 shape = SubResource("RectangleShape2D_p1bhh")
 
-[node name="Sprite2D" type="Sprite2D" parent="sharky"]
+[node name="Sprite2D" type="Sprite2D" parent="sharky" unique_id=407650707]
+position = Vector2(-7861.1133, -3065.1685)
+scale = Vector2(11.098474, 11.555149)
+texture = ExtResource("24_1kg77")
+
+[node name="biggy fishy" type="Area2D" parent="." unique_id=221658692 groups=["Colliding", "Purple"]]
+position = Vector2(2591.582, 620.3908)
+scale = Vector2(0.03125686, 0.017149284)
+script = ExtResource("26_p1bhh")
+
+[node name="bigbig" type="CollisionShape2D" parent="biggy fishy" unique_id=262117355]
+position = Vector2(-7866.326, -3039.9614)
+scale = Vector2(1.5421686, 1.6623378)
+shape = SubResource("RectangleShape2D_p1bhh")
+
+[node name="Sprite2D" type="Sprite2D" parent="biggy fishy" unique_id=1171266948]
 position = Vector2(-7861.1133, -3065.1685)
 scale = Vector2(11.098474, 11.555149)
 texture = ExtResource("24_1kg77")
