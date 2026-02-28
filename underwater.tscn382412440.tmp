@@ -11,16 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://bg20jamvnu5hg" path="res://food-small.png" id="10_ac1bu"]
 [ext_resource type="Texture2D" uid="uid://d3xbjthmisuoi" path="res://blue_food.png" id="11_ac1bu"]
 [ext_resource type="Script" uid="uid://bv1owf5ijnw8d" path="res://blue.gd" id="11_x7gjk"]
+[ext_resource type="Script" uid="uid://csigsdquorofn" path="res://fish_spawner.gd" id="13_mn0x3"]
 
 [sub_resource type="GDScript" id="GDScript_x7gjk"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7gjk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0q4ab"]
 size = Vector2(130.99991, 110.99997)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ac1bu"]
-size = Vector2(87, 82.75623)
+size = Vector2(87, 79)
 
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_x7gjk")
@@ -45,10 +44,7 @@ texture = ExtResource("5_2ru4w")
 position = Vector2(274, 585)
 texture = ExtResource("6_0q4ab")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
-shape = SubResource("RectangleShape2D_x7gjk")
-
-[node name="Character" type="CharacterBody2D" parent="." groups=["Character", "Colliding"]]
+[node name="Character" type="CharacterBody2D" parent="." groups=["Character"]]
 position = Vector2(122, 345)
 rotation = 3.1415927
 scale = Vector2(1.0000007, -1)
@@ -62,7 +58,7 @@ texture = ExtResource("3_n3fmg")
 position = Vector2(-0.99999833, 2)
 shape = SubResource("RectangleShape2D_0q4ab")
 
-[node name="Blue" type="Area2D" parent="." groups=["Colliding"]]
+[node name="Blue" type="Area2D" parent="."]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.6484375, 0.6015625)
 script = ExtResource("11_x7gjk")
@@ -73,11 +69,11 @@ scale = Vector2(2.2067003, 2.1615384)
 texture = ExtResource("11_ac1bu")
 
 [node name="Blue2" type="CollisionShape2D" parent="Blue"]
-position = Vector2(-232.86755, 260.8879)
+position = Vector2(-232.86755, 267.63638)
 scale = Vector2(3.4031043, 3.5932066)
 shape = SubResource("RectangleShape2D_ac1bu")
 
-[node name="Purple" type="Area2D" parent="." groups=["Colliding"]]
+[node name="Purple" type="Area2D" parent="."]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
 script = ExtResource("9_0q4ab")
@@ -90,32 +86,7 @@ texture = ExtResource("10_ac1bu")
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_ac1bu")
 
-[node name="Purple2" type="Area2D" parent="." groups=["Colliding"]]
+[node name="FishSpawner" type="Node2D" parent="."]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
-script = ExtResource("9_0q4ab")
-
-[node name="Purple" type="Sprite2D" parent="Purple2"]
-position = Vector2(30.843384, 191.16885)
-scale = Vector2(0.99999994, 1)
-texture = ExtResource("10_ac1bu")
-
-[node name="Purple2" type="CollisionShape2D" parent="Purple2"]
-position = Vector2(30.843384, 191.16885)
-scale = Vector2(1.5421684, 1.6623377)
-shape = SubResource("RectangleShape2D_ac1bu")
-
-[node name="Purple3" type="Area2D" parent="." groups=["Colliding"]]
-position = Vector2(940.5, 251.5)
-scale = Vector2(0.64843756, 0.6015625)
-script = ExtResource("9_0q4ab")
-
-[node name="Purple" type="Sprite2D" parent="Purple3"]
-position = Vector2(69.39758, 359.06497)
-scale = Vector2(0.99999994, 1)
-texture = ExtResource("10_ac1bu")
-
-[node name="Purple2" type="CollisionShape2D" parent="Purple3"]
-position = Vector2(69.397705, 359.06497)
-scale = Vector2(1.5421684, 1.6623377)
-shape = SubResource("RectangleShape2D_ac1bu")
+script = ExtResource("13_mn0x3")

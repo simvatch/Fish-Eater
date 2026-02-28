@@ -18,9 +18,17 @@ func _physics_process(delta):
 		respawn()
 
 func _on_body_entered(body):
-	if body.is_in_group("Character"):
+	if body.is_in_group("Colliding"):
 		respawn()
 
 func respawn():
-	position.x = spawn_x + randi_range(50, 300)
-	position.y = randi_range(min_y, max_y)
+	var new_pos
+	var safe = false
+	while not safe:
+		new_pos = Vector2(spawn_x + randi_range(50, 300), randi_range(min_y, max_y))
+		safe = true
+		for other_fish in get_tree().get_nodes_in_group("Colliding"):
+			if other_fish != self and other_fish.position.distance_to(new_pos) < 300:
+				safe = false
+				break
+	position = new_pos
