@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd3rpeeg77o31"]
+[gd_scene load_steps=8 format=3 uid="uid://cd3rpeeg77o31"]
 
 [ext_resource type="Script" uid="uid://vv8khmc743ut" path="res://menu.gd" id="1_4hy44"]
 [ext_resource type="Texture2D" uid="uid://ceptyhnyfyka7" path="res://menu.png" id="1_ouk20"]
+[ext_resource type="Texture2D" uid="uid://vdsir67w6lut" path="res://mega-weed.png" id="3_ecwwl"]
 [ext_resource type="FontFile" uid="uid://bxnw4x5pr72cq" path="res://FreckleFace-Regular.ttf" id="3_mae5d"]
 [ext_resource type="Texture2D" uid="uid://bg20jamvnu5hg" path="res://food-small.png" id="4_l48gv"]
 [ext_resource type="Texture2D" uid="uid://dbsot18tbx48h" path="res://player-evol-1.png" id="5_ecwwl"]
@@ -16,6 +17,20 @@ offset_top = -22.0
 offset_right = 1233.0
 offset_bottom = 978.0
 texture = ExtResource("1_ouk20")
+
+[node name="TextureRect9" type="TextureRect" parent="."]
+offset_left = -11.0
+offset_top = 138.0
+offset_right = 645.0
+offset_bottom = 650.0
+texture = ExtResource("3_ecwwl")
+
+[node name="TextureRect10" type="TextureRect" parent="."]
+offset_left = 561.0
+offset_top = 138.0
+offset_right = 1164.0
+offset_bottom = 650.0
+texture = ExtResource("3_ecwwl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
