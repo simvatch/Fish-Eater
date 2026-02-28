@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="Fish Eater"
+run/main_scene="uid://cd3rpeeg77o31"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
