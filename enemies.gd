@@ -1,5 +1,6 @@
 extends Area2D
 
+signal add_point
 @export var move_speed := 150
 @export var spawn_x := 1152    
 @export var despawn_x := -100  
@@ -19,7 +20,9 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("Colliding"):
+		add_point.emit()
 		respawn()
+	
 
 func respawn():
 	var new_pos

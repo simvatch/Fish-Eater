@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b43378367qhc1"]
+[gd_scene load_steps=32 format=3 uid="uid://b43378367qhc1"]
 
 [ext_resource type="Texture2D" uid="uid://btuyfbft47hp3" path="res://oceon-bg.png" id="2_mip7y"]
 [ext_resource type="Script" uid="uid://bdvccvqdid3dm" path="res://fish_moevement.gd" id="3_1k4jg"]
@@ -6,22 +6,86 @@
 [ext_resource type="Texture2D" uid="uid://dlscttcahng1e" path="res://new-mega-weed.png" id="5_2ru4w"]
 [ext_resource type="Script" uid="uid://bd6nlamge5ib8" path="res://seaweed.gd" id="5_mip7y"]
 [ext_resource type="Texture2D" uid="uid://qlgqbsj54ykc" path="res://new-reg-weed.png" id="6_0q4ab"]
+[ext_resource type="Texture2D" uid="uid://cevgutwdl2ais" path="res://new-player-swim1.png" id="7_6u020"]
+[ext_resource type="Texture2D" uid="uid://ce5ibf7d4a4h3" path="res://new-player-swim2.png" id="8_cn81j"]
 [ext_resource type="Script" uid="uid://ddcupoy7fv8t5" path="res://enemies.gd" id="9_0q4ab"]
+[ext_resource type="Texture2D" uid="uid://ct2fffg2e3pv7" path="res://new-player-swim3.png" id="9_p80m1"]
+[ext_resource type="Texture2D" uid="uid://yclrcdioj32y" path="res://new-player-swim4.png" id="10_abf7b"]
 [ext_resource type="Texture2D" uid="uid://b2f6jesilsyfm" path="res://new-food-small-swim1.png" id="10_mn0x3"]
 [ext_resource type="Texture2D" uid="uid://dvraptg0mcpfp" path="res://new-food-small-swim2.png" id="11_2ru4w"]
 [ext_resource type="Texture2D" uid="uid://d3xbjthmisuoi" path="res://blue_food.png" id="11_ac1bu"]
 [ext_resource type="Script" uid="uid://bv1owf5ijnw8d" path="res://blue.gd" id="11_x7gjk"]
 [ext_resource type="Texture2D" uid="uid://dumona87v6tw5" path="res://new-food-small-swim3.png" id="12_sxahd"]
 [ext_resource type="Texture2D" uid="uid://cngtfatfhsgdx" path="res://new-food-small-swim4.png" id="13_egjh1"]
+[ext_resource type="FontFile" uid="uid://bxnw4x5pr72cq" path="res://FreckleFace-Regular.ttf" id="18_cn81j"]
+[ext_resource type="Texture2D" uid="uid://daqdvaqtnj6ct" path="res://new-player-evo-swim1.png" id="19_37j1w"]
+[ext_resource type="Texture2D" uid="uid://u1qnp4ribvub" path="res://new-player-evo-swim2.png" id="20_057cj"]
+[ext_resource type="Texture2D" uid="uid://bvhsvdvidggkp" path="res://new-player-evo-swim3.png" id="21_56waf"]
+[ext_resource type="Texture2D" uid="uid://cad1jeuj0sfib" path="res://new-player-evo-swim4.png" id="22_1kg77"]
 
 [sub_resource type="GDScript" id="GDScript_x7gjk"]
+script/source = "extends Node2D
+
+@export var level := 1
+@export var score := 0  
+@export var points_to_level_up := 10 
+@onready var purple_fish1 := $Purple
+@onready var purple_fish2 := $Purple2
+@onready var purple_fish3 := $Purple3
+
+func _ready():
+	show_level(level)
+	$CanvasLayer/Plus1.hide() 
+	purple_fish1.add_point.connect(add_point)
+	purple_fish2.add_point.connect(add_point)
+	purple_fish3.add_point.connect(add_point)
+
+func show_level(lvl):
+	$Level1.hide()
+	$Level2.hide()
+
+	match lvl:
+		1:
+			$Level1.show()
+		2: 
+			$Level2.show()
+
+func add_point():
+	score += 1
+	print(score)
+	show_plus_one()
+
+	if score >= points_to_level_up:
+		level_up()
+
+func level_up():
+	score = 0  
+	level += 1
+	show_level(level)
+	
+var plus_one_tween: Tween = null
+
+func show_plus_one():
+	if plus_one_tween != null and plus_one_tween.is_valid():
+		plus_one_tween.kill()
+
+	$CanvasLayer/Plus1.visible = true
+	$CanvasLayer/Plus1.modulate.a = 1.0
+
+	var original_y = $CanvasLayer/Plus1.position.y
+
+	plus_one_tween = create_tween()
+	plus_one_tween.tween_property($CanvasLayer/Plus1, \"position:y\", original_y - 30, 0.5)
+	plus_one_tween.parallel().tween_property($CanvasLayer/Plus1, \"modulate:a\", 0.0, 0.5)
+
+	await plus_one_tween.finished
+
+	$CanvasLayer/Plus1.visible = false
+	$CanvasLayer/Plus1.position.y = original_y
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7gjk"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0q4ab"]
-size = Vector2(130.99991, 110.99997)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6u020"]
+size = Vector2(20, 37)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ac1bu"]
 size = Vector2(87, 82.75623)
@@ -86,6 +150,49 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0q4ab"]
+size = Vector2(131.99991, 128.49997)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6u020"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_6u020")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cn81j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_p80m1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_abf7b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p1bhh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_37j1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_057cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_56waf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1kg77")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Node2D" type="Node2D"]
 script = SubResource("GDScript_x7gjk")
 
@@ -110,23 +217,8 @@ position = Vector2(274, 585)
 texture = ExtResource("6_0q4ab")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(498, 15.5)
 shape = SubResource("RectangleShape2D_x7gjk")
-
-[node name="Character" type="CharacterBody2D" parent="." groups=["Character", "Colliding"]]
-position = Vector2(122, 345)
-rotation = 3.1415927
-scale = Vector2(1.0000007, -1)
-script = ExtResource("3_1k4jg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
-position = Vector2(-0.99999833, 2)
-shape = SubResource("RectangleShape2D_0q4ab")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character"]
-position = Vector2(121.99995, -345)
-rotation = -3.1415925
-scale = Vector2(0.9999993, -1)
-sprite_frames = SubResource("SpriteFrames_6u020")
 
 [node name="Blue" type="Area2D" parent="." groups=["Colliding"]]
 position = Vector2(940.5, 251.5)
@@ -143,14 +235,10 @@ position = Vector2(-232.86755, 260.8879)
 scale = Vector2(3.4031043, 3.5932066)
 shape = SubResource("RectangleShape2D_ac1bu")
 
-[node name="Purple" type="Area2D" parent="." groups=["Colliding"]]
+[node name="Purple" type="Area2D" parent="." groups=["Colliding", "Purple"]]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
 script = ExtResource("9_0q4ab")
-
-[node name="Purple2" type="CollisionShape2D" parent="Purple"]
-scale = Vector2(1.5421684, 1.6623377)
-shape = SubResource("RectangleShape2D_ac1bu")
 
 [node name="Purple" type="AnimatedSprite2D" parent="Purple"]
 position = Vector2(171.95177, 180.36362)
@@ -158,22 +246,28 @@ scale = Vector2(0.9999999, 1)
 sprite_frames = SubResource("SpriteFrames_cn81j")
 autoplay = "default"
 
-[node name="Purple2" type="Area2D" parent="." groups=["Colliding"]]
+[node name="Purple2" type="CollisionShape2D" parent="Purple"]
+position = Vector2(171.9518, 178.7013)
+scale = Vector2(1.5421684, 1.6623377)
+shape = SubResource("RectangleShape2D_ac1bu")
+
+[node name="Purple2" type="Area2D" parent="." groups=["Colliding", "Purple"]]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
 script = ExtResource("9_0q4ab")
 
-[node name="Purple2" type="CollisionShape2D" parent="Purple2"]
-position = Vector2(173.49408, 180.36365)
-scale = Vector2(1.5421684, 1.6623377)
-shape = SubResource("RectangleShape2D_ac1bu")
-
 [node name="Purple" type="AnimatedSprite2D" parent="Purple2"]
+position = Vector2(171.95177, -9.142855)
 scale = Vector2(0.9999999, 1)
 sprite_frames = SubResource("SpriteFrames_p80m1")
 autoplay = "default"
 
-[node name="Purple3" type="Area2D" parent="." groups=["Colliding"]]
+[node name="Purple2" type="CollisionShape2D" parent="Purple2"]
+position = Vector2(171.95172, -7.4805145)
+scale = Vector2(1.5421684, 1.6623377)
+shape = SubResource("RectangleShape2D_ac1bu")
+
+[node name="Purple3" type="Area2D" parent="." groups=["Colliding", "Purple"]]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.64843756, 0.6015625)
 script = ExtResource("9_0q4ab")
@@ -183,9 +277,62 @@ position = Vector2(108.72287, 383.16882)
 scale = Vector2(0.98795146, 1.0064936)
 sprite_frames = SubResource("SpriteFrames_abf7b")
 autoplay = "default"
-frame_progress = 0.7624017
+frame = 3
+frame_progress = 1.0
 
 [node name="Purple2" type="CollisionShape2D" parent="Purple3"]
 position = Vector2(107.18074, 383.16888)
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_ac1bu")
+
+[node name="Level1" type="CharacterBody2D" parent="." groups=["Character", "Colliding"]]
+position = Vector2(122, 345)
+rotation = 3.1415927
+scale = Vector2(1.0000007, -1)
+script = ExtResource("3_1k4jg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level1"]
+position = Vector2(-0.49999237, 4.75)
+shape = SubResource("RectangleShape2D_0q4ab")
+
+[node name="Fish1" type="AnimatedSprite2D" parent="Level1"]
+position = Vector2(-0.99998474, 1)
+rotation = -3.1415925
+scale = Vector2(0.9999993, -1)
+sprite_frames = SubResource("SpriteFrames_6u020")
+autoplay = "default"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Plus1" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = -62.0
+offset_right = 22.5
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_cn81j")
+theme_override_font_sizes/font_size = 100
+text = "+1"
+
+[node name="Level2" type="CharacterBody2D" parent="." groups=["Character", "Colliding"]]
+position = Vector2(122, 345)
+rotation = -3.1415925
+scale = Vector2(1.0000007, -1)
+script = ExtResource("3_1k4jg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level2"]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_0q4ab")
+
+[node name="Fish2" type="AnimatedSprite2D" parent="Level2"]
+position = Vector2(-0.99998474, 1)
+rotation = -3.1415925
+scale = Vector2(0.9999993, -1)
+sprite_frames = SubResource("SpriteFrames_p1bhh")
+autoplay = "default"
