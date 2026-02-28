@@ -1,15 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://b43378367qhc1"]
+[gd_scene load_steps=16 format=3 uid="uid://b43378367qhc1"]
 
 [ext_resource type="Script" uid="uid://b2dqjtq0tfiw8" path="res://underwater.gd" id="1_1ttkh"]
 [ext_resource type="Texture2D" uid="uid://btuyfbft47hp3" path="res://oceon-bg.png" id="2_mip7y"]
 [ext_resource type="Script" uid="uid://bdvccvqdid3dm" path="res://fish_moevement.gd" id="3_1k4jg"]
 [ext_resource type="Texture2D" uid="uid://dbsot18tbx48h" path="res://player-evol-1.png" id="3_n3fmg"]
+[ext_resource type="Texture2D" uid="uid://c387tiso7i6sr" path="res://new-long-weed.png" id="4_mn0x3"]
+[ext_resource type="Texture2D" uid="uid://dlscttcahng1e" path="res://new-mega-weed.png" id="5_2ru4w"]
 [ext_resource type="Script" uid="uid://bd6nlamge5ib8" path="res://seaweed.gd" id="5_mip7y"]
 [ext_resource type="Texture2D" uid="uid://qlgqbsj54ykc" path="res://new-reg-weed.png" id="6_0q4ab"]
-[ext_resource type="Texture2D" uid="uid://bevvc3w4afs7x" path="res://long-weed.png" id="6_cx0qg"]
-[ext_resource type="Texture2D" uid="uid://vdsir67w6lut" path="res://mega-weed.png" id="7_0q4ab"]
 [ext_resource type="Script" uid="uid://ddcupoy7fv8t5" path="res://enemies.gd" id="9_0q4ab"]
 [ext_resource type="Texture2D" uid="uid://bg20jamvnu5hg" path="res://food-small.png" id="10_ac1bu"]
+[ext_resource type="Texture2D" uid="uid://d3xbjthmisuoi" path="res://blue_food.png" id="11_ac1bu"]
+[ext_resource type="Script" uid="uid://vxha8c0s5wqx" path="res://clones.gd" id="11_mn0x3"]
+[ext_resource type="Script" uid="uid://bv1owf5ijnw8d" path="res://blue.gd" id="11_x7gjk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0q4ab"]
 size = Vector2(130.99991, 110.99997)
@@ -30,11 +33,11 @@ script = ExtResource("5_mip7y")
 
 [node name="Long" type="Sprite2D" parent="CharacterBody2D2"]
 position = Vector2(448, 520)
-texture = ExtResource("6_cx0qg")
+texture = ExtResource("4_mn0x3")
 
 [node name="Mega" type="Sprite2D" parent="CharacterBody2D2"]
 position = Vector2(824, 392)
-texture = ExtResource("7_0q4ab")
+texture = ExtResource("5_2ru4w")
 
 [node name="Small" type="Sprite2D" parent="CharacterBody2D2"]
 position = Vector2(274, 585)
@@ -54,15 +57,34 @@ texture = ExtResource("3_n3fmg")
 position = Vector2(-0.99999833, 2)
 shape = SubResource("RectangleShape2D_0q4ab")
 
-[node name="Enemies" type="Area2D" parent="."]
+[node name="Blue" type="Area2D" parent="."]
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.6484375, 0.6015625)
+script = ExtResource("11_x7gjk")
+
+[node name="Blue" type="Sprite2D" parent="Blue"]
+position = Vector2(-231.3252, 267.63638)
+scale = Vector2(2.2067003, 2.1615384)
+texture = ExtResource("11_ac1bu")
+
+[node name="Blue2" type="CollisionShape2D" parent="Blue"]
+position = Vector2(-232.86755, 267.63638)
+scale = Vector2(3.4031043, 3.5932066)
+shape = SubResource("RectangleShape2D_ac1bu")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(940.5, 251.5)
+scale = Vector2(0.9999998, 1)
+script = ExtResource("11_mn0x3")
+
+[node name="Purple" type="Area2D" parent="Node2D"]
+scale = Vector2(0.6484377, 0.6015625)
 script = ExtResource("9_0q4ab")
 
-[node name="Purple" type="Sprite2D" parent="Enemies"]
+[node name="Purple" type="Sprite2D" parent="Node2D/Purple"]
 scale = Vector2(0.99999994, 1)
 texture = ExtResource("10_ac1bu")
 
-[node name="Purple2" type="CollisionShape2D" parent="Enemies"]
+[node name="Purple2" type="CollisionShape2D" parent="Node2D/Purple"]
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_ac1bu")
