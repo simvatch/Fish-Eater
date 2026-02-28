@@ -5,7 +5,6 @@ extends Node2D
 func _ready() -> void:
 	button.pressed.connect(_on_button_pressed)
 
-
 func _process(delta: float) -> void:
 	pass
 	

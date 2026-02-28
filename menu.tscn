@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd3rpeeg77o31"]
+[gd_scene load_steps=7 format=3 uid="uid://cd3rpeeg77o31"]
 
 [ext_resource type="Script" uid="uid://vv8khmc743ut" path="res://menu.gd" id="1_4hy44"]
 [ext_resource type="Texture2D" uid="uid://ceptyhnyfyka7" path="res://menu.png" id="1_ouk20"]
 [ext_resource type="FontFile" uid="uid://bxnw4x5pr72cq" path="res://FreckleFace-Regular.ttf" id="3_mae5d"]
+[ext_resource type="Texture2D" uid="uid://bg20jamvnu5hg" path="res://food-small.png" id="4_l48gv"]
+[ext_resource type="Texture2D" uid="uid://dbsot18tbx48h" path="res://player-evol-1.png" id="5_ecwwl"]
+[ext_resource type="Texture2D" uid="uid://vmbfs23mcxkk" path="res://player-evol-2.png" id="6_kk3ma"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_4hy44")
@@ -47,3 +50,54 @@ text = "Play"
 [node name="TextureRect2" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+offset_left = 119.0
+offset_top = 66.0
+offset_right = 247.0
+offset_bottom = 194.0
+rotation = -0.5947593
+scale = Vector2(-1.15625, 1.0689656)
+texture = ExtResource("4_l48gv")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+offset_left = 929.00006
+offset_top = 210.00002
+offset_right = 1142.6655
+offset_bottom = 426.93512
+rotation = 0.33200282
+texture = ExtResource("5_ecwwl")
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+offset_left = 226.0
+offset_top = 440.00003
+offset_right = 354.0
+offset_bottom = 568.00006
+rotation = -0.30772614
+scale = Vector2(-1.2990655, 1.2063493)
+texture = ExtResource("6_kk3ma")
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+offset_left = 345.0
+offset_top = 203.00002
+offset_right = 473.0
+offset_bottom = 331.00003
+rotation = -0.32175055
+scale = Vector2(-1.6491228, 1.3934426)
+texture = ExtResource("5_ecwwl")
+
+[node name="TextureRect7" type="TextureRect" parent="."]
+offset_left = 947.0
+offset_top = 61.000015
+offset_right = 1092.0273
+offset_bottom = 203.49379
+rotation = -0.4019556
+texture = ExtResource("6_kk3ma")
+
+[node name="TextureRect8" type="TextureRect" parent="."]
+offset_left = 724.99994
+offset_top = 547.0
+offset_right = 897.4038
+offset_bottom = 690.4369
+rotation = -0.75064623
+texture = ExtResource("4_l48gv")
