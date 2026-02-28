@@ -349,13 +349,13 @@ scale = Vector2(0.42047128, 0.36187744)
 script = ExtResource("9_0q4ab")
 
 [node name="octo_box" type="CollisionShape2D" parent="octo" unique_id=524759194]
-position = Vector2(171.9518, 178.7013)
+position = Vector2(-1337.4409, 503.50476)
 scale = Vector2(1.5421684, 1.6623377)
 shape = SubResource("RectangleShape2D_ac1bu")
 
 [node name="Sprite2D" type="Sprite2D" parent="octo" unique_id=543386165]
-position = Vector2(171.95166, 279.84485)
-scale = Vector2(0.9999999, 1)
+position = Vector2(-1587.0538, 498.19934)
+scale = Vector2(2.1164892, 2.2486935)
 texture = ExtResource("13_56waf")
 
 [node name="sharky" type="Area2D" parent="." unique_id=1136167885 groups=["Colliding", "Purple"]]
