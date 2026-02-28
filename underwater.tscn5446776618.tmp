@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://b43378367qhc1"]
+
+[ext_resource type="Script" uid="uid://b2dqjtq0tfiw8" path="res://underwater.gd" id="1_1ttkh"]
+[ext_resource type="Texture2D" uid="uid://baj5b5f5rc4wm" path="res://sea.png" id="1_caky0"]
+[ext_resource type="Script" uid="uid://bdvccvqdid3dm" path="res://fish_moevement.gd" id="3_1k4jg"]
+[ext_resource type="Texture2D" uid="uid://dbsot18tbx48h" path="res://player-evol-1.png" id="3_n3fmg"]
+[ext_resource type="Script" uid="uid://bd6nlamge5ib8" path="res://seaweed.gd" id="5_mip7y"]
+[ext_resource type="Texture2D" uid="uid://bevvc3w4afs7x" path="res://long-weed.png" id="6_cx0qg"]
+[ext_resource type="Texture2D" uid="uid://vdsir67w6lut" path="res://mega-weed.png" id="7_0q4ab"]
+[ext_resource type="Texture2D" uid="uid://brfoq7nfn5444" path="res://seaweed.png" id="8_ac1bu"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1ttkh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -15.0
+offset_top = -111.0
+offset_right = 1199.0
+offset_bottom = 889.0
+texture = ExtResource("1_caky0")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(122, 345)
+rotation = 3.1415927
+scale = Vector2(1.0000007, -1)
+script = ExtResource("3_1k4jg")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-102.99993, -16)
+texture = ExtResource("3_n3fmg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+script = ExtResource("5_mip7y")
+
+[node name="Long" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(448, 520)
+texture = ExtResource("6_cx0qg")
+
+[node name="Mega" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(824, 392)
+texture = ExtResource("7_0q4ab")
+
+[node name="Small" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(274, 583)
+texture = ExtResource("8_ac1bu")
