@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dlscttcahng1e" path="res://new-mega-weed.png" id="5_2ru4w"]
 [ext_resource type="Script" uid="uid://bd6nlamge5ib8" path="res://seaweed.gd" id="5_mip7y"]
 [ext_resource type="Texture2D" uid="uid://qlgqbsj54ykc" path="res://new-reg-weed.png" id="6_0q4ab"]
+[ext_resource type="Texture2D" uid="uid://brqdyhx71yfe1" path="res://new-food-med.png" id="7_1kg77"]
 [ext_resource type="Texture2D" uid="uid://cevgutwdl2ais" path="res://new-player-swim1.png" id="7_6u020"]
 [ext_resource type="Texture2D" uid="uid://ce5ibf7d4a4h3" path="res://new-player-swim2.png" id="8_cn81j"]
 [ext_resource type="Script" uid="uid://ddcupoy7fv8t5" path="res://enemies.gd" id="9_0q4ab"]
@@ -13,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://yclrcdioj32y" path="res://new-player-swim4.png" id="10_abf7b"]
 [ext_resource type="Texture2D" uid="uid://b2f6jesilsyfm" path="res://new-food-small-swim1.png" id="10_mn0x3"]
 [ext_resource type="Texture2D" uid="uid://dvraptg0mcpfp" path="res://new-food-small-swim2.png" id="11_2ru4w"]
-[ext_resource type="Texture2D" uid="uid://d3xbjthmisuoi" path="res://blue_food.png" id="11_ac1bu"]
 [ext_resource type="Script" uid="uid://bv1owf5ijnw8d" path="res://blue.gd" id="11_x7gjk"]
 [ext_resource type="Texture2D" uid="uid://dumona87v6tw5" path="res://new-food-small-swim3.png" id="12_sxahd"]
 [ext_resource type="Texture2D" uid="uid://bnue0maigr0wn" path="res://octopus.png" id="13_56waf"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://bvhsvdvidggkp" path="res://new-player-evo-swim3.png" id="21_56waf"]
 [ext_resource type="Texture2D" uid="uid://cad1jeuj0sfib" path="res://new-player-evo-swim4.png" id="22_1kg77"]
 [ext_resource type="Texture2D" uid="uid://dfd4mwxy3wccy" path="res://shark!.png" id="24_1kg77"]
+[ext_resource type="Texture2D" uid="uid://dps6hyhf2jjyt" path="res://new-food-big.png" id="25_p1bhh"]
 
 [sub_resource type="GDScript" id="GDScript_x7gjk"]
 script/source = "extends Node2D
@@ -233,7 +234,7 @@ script = ExtResource("11_x7gjk")
 [node name="Blue" type="Sprite2D" parent="Blue" unique_id=1946488004]
 position = Vector2(-231.3252, 267.63638)
 scale = Vector2(2.2067003, 2.1615384)
-texture = ExtResource("11_ac1bu")
+texture = ExtResource("7_1kg77")
 
 [node name="Blue2" type="CollisionShape2D" parent="Blue" unique_id=870911691]
 position = Vector2(-232.86755, 260.8879)
@@ -371,3 +372,18 @@ shape = SubResource("RectangleShape2D_ac1bu")
 position = Vector2(171.95166, 279.84485)
 scale = Vector2(0.9999999, 1)
 texture = ExtResource("24_1kg77")
+
+[node name="biggest fish" type="Area2D" parent="." unique_id=937502925 groups=["Colliding", "Purple"]]
+position = Vector2(2591.582, 620.3908)
+scale = Vector2(0.03125686, 0.017149284)
+script = ExtResource("9_0q4ab")
+
+[node name="bigbig" type="CollisionShape2D" parent="biggest fish" unique_id=1709688802]
+position = Vector2(171.9518, 178.7013)
+scale = Vector2(1.5421684, 1.6623377)
+shape = SubResource("RectangleShape2D_ac1bu")
+
+[node name="Sprite2D" type="Sprite2D" parent="biggest fish" unique_id=1994923377]
+position = Vector2(171.95166, 279.84485)
+scale = Vector2(0.9999999, 1)
+texture = ExtResource("25_p1bhh")
