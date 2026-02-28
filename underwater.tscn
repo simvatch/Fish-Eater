@@ -51,8 +51,6 @@ func _ready():
 	purple_fish2.add_point.connect(add_point)
 	purple_fish3.add_point.connect(add_point)
 	blue_fish.add_point.connect(add_point)
-	#shark.add_point.connect(add_point)
-	#octopus.add_point.connect(add_point)
 
 func show_level(lvl):
 	$Level1.hide()
@@ -183,7 +181,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0q4ab"]
-size = Vector2(131.99991, 128.49997)
+size = Vector2(136.99995, 130.24998)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6u020"]
 animations = [{
@@ -374,13 +372,13 @@ text = "+2"
 script = ExtResource("19_p1bhh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level2"]
-position = Vector2(0, -0.25)
+position = Vector2(165.49997, 64.87501)
 shape = SubResource("RectangleShape2D_0q4ab")
 
 [node name="Fish2" type="AnimatedSprite2D" parent="Level2"]
-position = Vector2(-0.99998474, 1)
+position = Vector2(167.00006, 67)
 rotation = -3.1415925
-scale = Vector2(0.9999993, -1)
+scale = Vector2(-1.0361166, -1.000002)
 sprite_frames = SubResource("SpriteFrames_p1bhh")
 autoplay = "default"
 
