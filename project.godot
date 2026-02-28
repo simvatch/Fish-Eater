@@ -16,4 +16,6 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Fish Eater"
 config/features=PackedStringArray("4.6", "Forward Plus")
+run/main_scene="uid://cd3rpeeg77o31"
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
