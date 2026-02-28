@@ -1,5 +1,6 @@
 extends Area2D
 
+signal add_point
 @export var move_speed := 175
 @export var spawn_x := 1200  
 @export var despawn_x := -100  
@@ -26,7 +27,11 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("Character"):
-		start_respawn_timer()
+		if Globals.level < 2:
+			get_tree().change_scene_to_file("res://game_over.tscn")
+		else:
+			add_point.emit(2)
+			start_respawn_timer()
 
 func start_respawn_timer():
 	if waiting_to_respawn:

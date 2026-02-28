@@ -36,7 +36,6 @@ script/source = "extends Node2D
 func _ready():
 	show_level(level)
 	$CanvasLayer/Plus1.hide() 
-	$CanvasLayer/Plus2.hide() 
 	purple_fish1.add_point.connect(add_point)
 	purple_fish2.add_point.connect(add_point)
 	purple_fish3.add_point.connect(add_point)
@@ -246,6 +245,13 @@ shape = SubResource("RectangleShape2D_x7gjk")
 position = Vector2(940.5, 251.5)
 scale = Vector2(0.6484375, 0.6015625)
 script = ExtResource("11_x7gjk")
+move_speed = null
+spawn_x = null
+despawn_x = null
+min_y = null
+max_y = null
+min_respawn_time = null
+max_respawn_time = null
 
 [node name="Blue" type="Sprite2D" parent="Blue"]
 position = Vector2(-231.3252, 267.63638)

@@ -36,7 +36,6 @@ script/source = "extends Node2D
 func _ready():
 	show_level(level)
 	$CanvasLayer/Plus1.hide() 
-	$CanvasLayer/Plus2.hide() 
 	purple_fish1.add_point.connect(add_point)
 	purple_fish2.add_point.connect(add_point)
 	purple_fish3.add_point.connect(add_point)

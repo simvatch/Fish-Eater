@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://btx3grxn6sq2u"]
+
+[ext_resource type="Script" uid="uid://bc6krflqcwhma" path="res://game_over.gd" id="1_ccer4"]
+[ext_resource type="Texture2D" uid="uid://dv18pskcvposg" path="res://game_over.png" id="2_8u835"]
+[ext_resource type="FontFile" uid="uid://bxnw4x5pr72cq" path="res://FreckleFace-Regular.ttf" id="3_ftari"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ccer4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -34.0
+offset_top = -137.0
+offset_right = 1342.0
+offset_bottom = 863.0
+texture = ExtResource("2_8u835")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -446.5
+offset_top = 57.0
+offset_right = 446.5
+offset_bottom = 304.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.9529416, 0, 0.24040943, 1)
+theme_override_fonts/font = ExtResource("3_ftari")
+theme_override_font_sizes/font_size = 200
+text = "Game Over"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -339.75
+offset_top = -268.0
+offset_right = 339.75
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_ftari")
+theme_override_font_sizes/font_size = 150
+text = "Play Again"
