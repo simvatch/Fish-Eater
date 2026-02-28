@@ -16,7 +16,6 @@ func _ready():
 	for seaweed in seaweeds:
 		respawn_seaweed(seaweed)
 
-
 func _physics_process(delta):
 	for seaweed in seaweeds:
 		seaweed.position.x -= move_speed * delta
@@ -24,19 +23,6 @@ func _physics_process(delta):
 		if seaweed.position.x < despawn_x:
 			respawn_seaweed(seaweed)
 
-
-func respawn_seaweed(seaweed):
-	var valid_position := false
-	var new_x := 0
-
-	while not valid_position:
-		new_x = spawn_x + randi_range(0, 300)
-		valid_position = true
-		for other in seaweeds:
-			if other == seaweed:
-				continue
-			if abs(other.position.x - new_x) < min_spacing_x:
-				valid_position = false
-				break
-
-	seaweed.position.x = new_x
+func respawn_seaweed(seaweed, additional_offset=0):
+	var random_offset := randi_range(0, 50)
+	seaweed.position.x = spawn_x + additional_offset + random_offset

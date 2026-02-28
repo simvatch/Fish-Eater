@@ -28,7 +28,7 @@ func respawn():
 		new_pos = Vector2(spawn_x + randi_range(50, 300), randi_range(min_y, max_y))
 		safe = true
 		for other_fish in get_tree().get_nodes_in_group("Colliding"):
-			if other_fish != self and other_fish.position.distance_to(new_pos) < 300:
+			if other_fish != self and other_fish.position.distance_to(new_pos) < 100:
 				safe = false
 				break
 	position = new_pos
